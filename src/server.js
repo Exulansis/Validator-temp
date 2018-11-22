@@ -23,12 +23,8 @@ const setupApp = (iw) => {
       *  minor release.
       */
   
-    await serviceIdentity.validateJWT(response, null)
+    await iw.validateJWT(credentialResponse, null)
     console.log(credentialResponse)
-  
-    if (!response.interactionToken.satisfiesRequest(request.interactionToken)) {
-      throw new Error('Invalid credential passed, make sure issuer is currect.')
-    }
   })
 
   const port = 8000
