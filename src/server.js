@@ -1,8 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const instantiateIdentity = require('./validator')
+const { JolocomLib } = require('jolocom-lib')
 
-const setupApp = () => {
+const setupApp = (iw) => {
   const app = express()
 
   app.use((req, res, next) => {
@@ -14,9 +15,20 @@ const setupApp = () => {
   app.use(bodyParser.urlencoded({ extended: true }))
   app.use(bodyParser.json())
 
-  app.post('/authenticate', (req, res) => {
+  app.post('/authenticate', async (req, res) => {
     const { token } = req.body
-    console.log(token)
+    const credentialResponse = await JolocomLib.parse.interactionToken.fromJWT(token)
+  
+    /** Ensure request and response match, will check the nonce, audience, and signature. Will check the callbackURL too in next
+      *  minor release.
+      */
+  
+    await serviceIdentity.validateJWT(response, null)
+    console.log(credentialResponse)
+  
+    if (!response.interactionToken.satisfiesRequest(request.interactionToken)) {
+      throw new Error('Invalid credential passed, make sure issuer is currect.')
+    }
   })
 
   const port = 8000
@@ -24,5 +36,5 @@ const setupApp = () => {
 }
 
 instantiateIdentity().then(iw => {
-  setupApp()
+  setupApp(iw)
 })
