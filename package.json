@@ -1,0 +1,11 @@
+{
+  "name": "script",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^10.12.10",
+    "express": "^4.16.4",
+    "jolocom-lib": "^2.2.3"
+  }
+}
