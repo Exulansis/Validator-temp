@@ -35,7 +35,7 @@ const setupApp = iw => {
     )
 
     console.log('New authentication request generated')
-    res.send(credentialRequest.encode())
+    res.send({token: credentialRequest.encode()})
   })
 
   app.post('/authenticate', async (req, res) => {
