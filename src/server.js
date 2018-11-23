@@ -15,8 +15,8 @@ const setupApp = iw => {
   app.use(bodyParser.urlencoded({ extended: true }))
   app.use(bodyParser.json())
 
-  app.get('/authenticate:callbackURL', async (req, res) => {
-    const { callbackURL } = req.params
+  app.post('/credentialRequest', async (req, res) => {
+    const { callbackURL } = req.body
     const credentialRequest = await iw.create.interactionTokens.request.share(
       {
         callbackURL,
