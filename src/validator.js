@@ -1,13 +1,12 @@
 const { JolocomLib } = require('jolocom-lib')
+const { encryptionPassword, entropy } = require('../config')
 
-module.exports = instantiateIdentity = async () => {
-  const entropy = Buffer.from('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'hex')
-  const pass = 'secret'
-  const keyProvider = new JolocomLib.KeyProvider(entropy, pass)
-  
+module.exports = getRpiIdentityWallet = async () => {
+  const keyProvider = new JolocomLib.KeyProvider(Buffer.from(entropy, 'hex'), encryptionPassword)
+
   const registry = JolocomLib.registries.jolocom.create()
   return registry.authenticate(keyProvider, {
     derivationPath: JolocomLib.KeyTypes.jolocomIdentityKey,
-    encryptionPass: pass
+    encryptionPass: encryptionPassword
   })
 }

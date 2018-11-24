@@ -1,0 +1,21 @@
+{
+  "callbackURL": "dflow://",
+  "entropy": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "encryptionPassword": "secret",
+  "credentialRequirements": [
+    {
+      "type": [
+        "Credential",
+        "ProofOfEmailCredential"
+      ],
+      "constraints": []
+    },
+    {
+      "type": [
+        "Credential",
+        "ProofOfNameCredential"
+      ],
+      "constraints": []
+    }
+  ]
+}
