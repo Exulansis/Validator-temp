@@ -1,5 +1,5 @@
 {
-  "callbackURL": "dflow://",
+  "callbackURL": "dflow://authenticate/",
   "entropy": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
   "encryptionPassword": "secret",
   "credentialRequirements": [
